@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}" type="text/css" />
+    <title>User Signup</title>
+</head>
+<body>
+    <div>
+        <div class="top-bar">
+            <div class="portal-header">
+                <h1>Signup-Portal</h1>
+            </div>
+        </div>
+        <div class="main-content">
+            <h1>Signup</h1>
+            <div class="user_form">
+               <form method="POST">
+                   <table>
+                       <tr>
+                           <td class="left-column"><label>Username:</label></td>
+                            <td class="right-column"><input name="username" type="text" value='{{username}}'/>
+                                <span class="error">{{username_error}}</span>
+                            </td>
+                       </tr>
+                       <tr>
+                            <td class="left-column"><label>Password:</label> </td>
+                            <td class="right-column"><input name="password" type="password" value='{{password}}'/>
+                                <span class="error">{{password_error}}</span>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td class="left-column"><label>Verify Password:</label> </td>
+                            <td class="right-column"><input name="verify_password" type="password" value='{{verify_password}}'/>
+                                <span class="error">{{verify_password_error}}</span>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td class="left-column"><label>Email: (Optional)</label></td>
+                            <td class="right-column"><input name="email" type="text" value='{{email}}'/>
+                                <span class="error">{{email_error}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="bottom"><input type="Submit"></td>
+                        </tr>
+                   </table>
+                </form> 
+            </div>
+        </div>
+    </div>    
+</body>
+</html>
