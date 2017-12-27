@@ -25,7 +25,7 @@ def validate_user():
 
     if ' ' in username or len(username) < 3 or len(username) > 20 or username is None:
         username_error = "Username must be 3 - 20 Characters and contain no Spaces."      
-        username = ''
+        username = username
     else: 
         username = username
 
@@ -41,11 +41,15 @@ def validate_user():
     else: 
         verify_password = verify_password
 
-    email_requirement = re.compile(r"^[\S]+@[\S]+.[\S]+$")
-    if email_requirement.match(email) == None or len(email) < 3 or len(email) > 20:
-        email_error = "Please enter a valid email!"
-    else:
-        email = email
+    # email_requirement = re.compile(r"^[\S]+@[\S]+.[\S]+$")
+    # if email_requirement.match(email) == None or len(email) < 3 or len(email) > 20:
+    #     email_error = "Please enter a valid email!"
+    # else:
+    #     email = email
+
+    if (email != '') and (not re.match('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$', email)):
+        email_error = 'This is not a valid email.'
+        email = ''
 
     if not username_error and not password_error and not verify_password_error and not email_error:
         username = username
@@ -65,7 +69,7 @@ def validate_user():
 @app.route("/valid-user")
 def valid_user():
     username = request.args.get('username')
-    return "<h1>Thank you for signing up, {0}!</h1>".format(username)
+    return render_template('welcome.html', name = username)
 
 
 app.run()

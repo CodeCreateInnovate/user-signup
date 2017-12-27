@@ -1,0 +1,20 @@
+body {
+    background-image:url("/static/north_lights.jpg");
+    margin: 0 auto;
+    text-align: center;
+}
+
+.main-div {
+    height: 300px;
+    width: 700px;
+    margin: 0 auto;
+    background-color: gray;
+    border-radius: 5px;
+    border: 2px solid white;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 250px;
+    margin-top: 200px;
+    
+}

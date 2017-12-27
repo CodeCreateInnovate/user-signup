@@ -1,6 +1,5 @@
 body {
     background-image:url("/static/nyc_rain.jpeg");
-    background-color: black;
     margin:0;
     height: 100px;
 }
