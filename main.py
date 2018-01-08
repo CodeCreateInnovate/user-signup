@@ -6,11 +6,11 @@ import re
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
-@app.route("/validate-user")
+@app.route("/")
 def display_signup_form():
     return render_template('signup.html')
 
-@app.route("/validate-user", methods=['POST'])
+@app.route("/", methods=['POST'])
 def validate_user():
     username = request.form['username']
     password = request.form['password']
@@ -41,15 +41,16 @@ def validate_user():
     else: 
         verify_password = verify_password
 
-    # email_requirement = re.compile(r"^[\S]+@[\S]+.[\S]+$")
-    # if email_requirement.match(email) == None or len(email) < 3 or len(email) > 20:
-    #     email_error = "Please enter a valid email!"
-    # else:
-    #     email = email
+    if password != verify_password: 
+        password_error = "Password must be 3 - 20 Characters and contain no Spaces."
+        verify_password_error = "Passwords Don't Match."
+        password = ''
+        verify_password = '' 
+        
 
     if (email != '') and (not re.match('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$', email)):
         email_error = 'This is not a valid email.'
-        email = ''
+        email = email
 
     if not username_error and not password_error and not verify_password_error and not email_error:
         username = username
@@ -66,7 +67,7 @@ def validate_user():
         verify_password = verify_password,
         email = email)
 
-@app.route("/valid-user")
+@app.route("/")
 def valid_user():
     username = request.args.get('username')
     return render_template('welcome.html', name = username)
